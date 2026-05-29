@@ -1,1 +1,28 @@
 
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Contract {
+
+    struct Vote {
+        mapping(address => bool) choices;
+    }
+
+    mapping(uint => Vote) voteToAddressChoice;
+
+    function createVote(uint _id) external {
+        Vote storage vote = voteToAddressChoice[_id];
+    }
+
+    function vote(uint _id) external {
+        voteToAddressChoice[_id].choices[msg.sender] = true;
+    }
+
+    function getVote(uint _id, address _addr)
+        external
+        view
+        returns(bool)
+    {
+        return voteToAddressChoice[_id].choices[_addr];
+    }
+}
