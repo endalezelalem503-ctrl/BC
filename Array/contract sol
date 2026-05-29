@@ -1,1 +1,13 @@
 
+contract X {
+  uint[3] favoriteNumbers;
+  uint[] allNumbers;
+
+  constructor() {
+    // push is allowed on dyamic arrays
+    allNumbers.push(1);
+
+    // not allowed on fixed size arrays
+    favoriteNumbers[0] = 1;
+  }
+}
