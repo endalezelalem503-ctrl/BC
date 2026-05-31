@@ -1,1 +1,9 @@
+contract Escrow {
+  event Approved(uint);
 
+  function approve() external {
+    // ...
+
+    emit Approved(address(this).balance);
+  }
+}
